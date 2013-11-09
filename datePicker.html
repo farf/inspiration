@@ -1,0 +1,7 @@
+<div class='filter-list years-list'>
+	<div class="filter-item year-item" ng-repeat="yearI in years" ng-click="setYear(yearI)" ng-class="{'selected':yearI==year}"> {{yearI}}</div>
+</div>
+<div  class='filter-list nb-days-list'>
+	<span class="filter-item item-month" ng-repeat="monthI in months" ng-click="setMonth(monthI)"  ng-class="{'selected':monthI==month}"> {{monthI|month}}</span><br/>
+	<span class="filter-item item-month" ng-click="setMonth(0)" ng-class="{'selected':month==0}">Je n'ai pas de mois de départ précis.</span>
+</div>

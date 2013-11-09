@@ -1,0 +1,35 @@
+<svg  version="1.1" 
+     viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet"
+>
+
+<g>
+    <defs>
+{{id}}
+        <ellipse id= "MyEllipse" clip-path="{{clippathurl}}" 
+        cx="50" cy="50" rx="40" ry="40" 
+        style="fill:none; stroke:#fff" stroke-width="15"></ellipse>
+    </defs>
+
+
+        <clipPath id="{{clippathid}}">
+            <path  d="M 50 50 L 35 0 L 65 0 z" id="{{pathid}}"></path>
+<animate ng-if='complete==false' xlink:href="{{pathhref}}"  attributeName="d" attributeType="XML" values="
+M 50 50 L 0 0 L 0 0 L 0 0 L 0 0 L 0 0 z;
+M 50 50 L 0 0 L 100 0 L 100 0 L 100 0 L 100 0 z;
+M 50 50 L 0 0 L 100 0 L 100 100 L 100 100 L 100 100 z;
+M 50 50 L 0 0 L 100 0 L 100 100 L 0 100 L 0 100 z;
+M 50 50 L 0 0 L 100 0 L 100 100 L 0 100 L 0 0 z
+" dur="{{delay}}s" fill="freeze"></animate>
+        </clipPath>
+
+<ellipse ng-if='complete==false' clip-path="{{clippathurl}}"  id="ellipse"
+cx="50" cy="50" rx="40" ry="40" 
+style="fill:none; stroke:white" stroke-width="20"  >
+</ellipse>  
+
+<ellipse ng-if='complete==true'   id="ellipse"
+cx="50" cy="50" rx="40" ry="40" 
+style="fill:none; stroke:white" stroke-width="20"  >
+</ellipse>  
+  </g>
+</svg>

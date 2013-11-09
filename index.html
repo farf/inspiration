@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="inspiration">
+	<head>
+		<title>Où partir?</title>
+		<link rel="stylesheet" type="text/css" href="vendors/bootstrap.min.css" media="screen" />
+		<link rel="stylesheet/less" type="text/css" href="inspiration.less" />
+		<script src="vendors/less-1.5.0.min.js"></script>
+	<script src="vendors/angular.min.js"></script>
+	<script src="vendors/angular-animate.min.js"></script>
+	<script src="Services/Filters.js"></script>
+	<script src="Services/Results.js"></script>
+	<script src="inspiration.js"></script>
+	</head>
+	<body>
+	  	<div  ng-controller='Ctrl' class="container">
+		  	<header>
+				<h1>Où partir?</h1>	
+			</header>
+		    <div class="filters">
+		    	<div class="sumary">
+		    		Je pars en 
+		    		<span ng-click="changeCurrentFilter('date')" ng-class="{'empty':currentFilters.month==null, 'selected':currentFilters.currentFilter=='date'}" class="field-container">
+		    			<span ev-flash class="field">
+		    				<span ng-if='currentFilters.month != 0'>{{currentFilters.month|month}}</span>
+		    				<span ng-if='currentFilters.month != null'>{{currentFilters.year}} </span>
+		    			</span>
+	    			</span> 
+		    		&nbsp; pendant 
+		    		<span ng-click="changeCurrentFilter('nbDays')" ng-class="{'empty':currentFilters.nbDays==null, 'selected':currentFilters.currentFilter=='nbDays'}" class="field-container"><span ev-flash class="field" ng-bind='currentFilters.nbDays|nbDays'></span></span>
+		    		&nbsp; pour faire 
+					<span ng-click="changeCurrentFilter('tags')" ng-class="{'empty':currentFilters.tags.length==0, 'selected':currentFilters.currentFilter=='tags'}" class="field-container"><span ev-flash class="field" ng-repeat='tag in currentFilters.tags'>
+						{{tag}}
+						<span ng-if='!$last'>,</span>
+					</span></span>
+		    		.
+	    		</div>
+		    	<div ng-switch on="currentFilters.currentFilter"  class="filter-list-container">
+		    		<div  ng-switch-when='date' class='date'>
+			    		<ev-datepicker nb-years="nbYears" offset-month = "3" year="currentFilters.year" month="currentFilters.month" click-month="changeCurrentFilter('nbDays')"></ev-datepicker>
+		    		</div>
+		    		<div  ng-switch-when='nbDays' class='nbDays'>
+		    			<ev-nb-days-picker nb-days='currentFilters.nbDays' click-nb-days="changeCurrentFilter('date')"></ev-nb-days-picker>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class='results'>
+		    	<div ng-repeat='result in results'>
+		    		<div ng-class="{main : $first}">
+		    			<ev-result number="$index+1" result="result"></ev-result>
+	    			</div>
+		    	</div>
+		    </div>
+	    </div>
+
+
+  	</body>
+</html>

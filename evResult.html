@@ -1,0 +1,44 @@
+<div class='result .col-md-4' ng-mouseenter='initTimer()' ng-mouseleave='stopTimer()'>
+	<div class='result-container'>
+		<img src='{{result.picture}}' class='picture'/>
+		<div class='overlay'></div>
+
+		<div ng-class='{show: $index==indexArgument-1 || $index==0}' class='argument-iterator' ng-repeat='argumentJ in arguments'>
+			<img src='{{argumentJ.picture}}' class='picture'/>
+			<div class='overlay'></div>
+			
+			<div class='caption'>
+				<div class='number'>{{number}}</div>
+				<div class='note'>5/10</div>
+				<div class='title'>{{argumentJ.title}}</div>
+				<div class='subtitle'>{{argumentJ.subtitle}}</div>
+			</div>
+		</div>
+
+		<div class='argument-detail'>
+			Janvier: +++ 28° / 80% humidité / <br/>
+			Deux semaines: ++ <br/>
+			Plongée: ++++ <br/>
+			Trek: + <br/>
+			Durée de vol: 10h <br/>
+		</div>
+
+		<div class='arguments'>
+			<div class='argument' ng-mouseenter='setIndexArgument($index+1)' ng-repeat='argumentI in arguments' ><ev-loader  ng-if='indexArgument>$index' complete='indexArgument>$index+1' class='loader' delay="3"></ev-loader>
+			<span>{{$index}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--
+
+Avril
+Famille
+Deux semaines
+Plongée, kitesurf, 
+
+avril ++
+
+-->

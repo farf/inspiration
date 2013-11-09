@@ -1,0 +1,5 @@
+<div class='filter-list'>
+	<span class="filter-item" ng-repeat="nbDayItem in nbDaysList" ng-click="setNbDays(nbDayItem)" ng-class="{'selected':nbDayItem==nbDay}"> 
+		{{nbDayItem|nbDays}}
+	</span>
+</div>
